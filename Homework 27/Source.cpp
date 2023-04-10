@@ -15,19 +15,19 @@ void show_movie(const movies& film) {
 		<< "\nDuration: " << film.duration
 		<< "\nPrice: " << film.price << "$\n";
 }
-int expensive(const movies& film1, const movies& film2, const movies& film3) {
+movies expensive(const movies& film1, const movies& film2, const movies& film3) {
 	int max = film1.price;
 	max = max > film2.price ? max : film2.price;
 	max = max > film3.price ? max : film3.price;
 
 	if (max == film1.price)
-		return film1.price;
+		return film1;
 	else
 		if (max == film2.price)
-			return film2.price;
+			return film2;
 		else
 			if (max == film3.price)
-				return film3.price;
+				return film3;
 
 
 }
@@ -85,10 +85,11 @@ int main() {
 		2000,
 		"o",
 		400,
-		30000
+		500000
 	};
 	
-	std::cout <<"\nTask 2.\n"<< expensive(MyFilm1, MyFilm2, MyFilm3);
+	std::cout << "\nTask 2.\n";
+	show_movie(expensive(MyFilm1, MyFilm2, MyFilm3));
 	//Task 3
 	std::cout << "\n\nTask 3.\n";
 	show_movie(MyFilm1);
